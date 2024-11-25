@@ -14,7 +14,7 @@ const ImageAndTitleCard: React.FC<ImageAndTitleCardProps> = ({ house,imageUrl, o
   return (
     <TouchableOpacity onPress={onPress} style={styles.touchable}>
       <Card style={styles.card}>
-        <Card.Cover source={{ uri: String(imageUrl) }} />
+        <Card.Cover source={imageUrl} style={styles.image}/>
         <Card.Content>
           <Title>{house.name}</Title>
           <Paragraph>Founder: {house.founder}</Paragraph>
@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
   },
   touchable: {
     marginBottom: 10,
+  },
+  image: {
+    
+    resizeMode: 'contain',
   },
 });
 

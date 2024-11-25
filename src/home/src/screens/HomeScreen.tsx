@@ -31,10 +31,10 @@ const HomeScreen = ({ navigation }: any) => {
 
   const getHouseAsset = (houseName: string): string => {
     const houseAssets: { [key: string]: string } = {
-      Gryffindor: require("/Users/admin/Developer/SpelBound/src/home/src/assets/gryffindor.jpg"),
-      Slytherin: require("/Users/admin/Developer/SpelBound/src/home/src/assets/slytherin.png"),
-      Hufflepuff: require("/Users/admin/Developer/SpelBound/src/home/src/assets/hufflepuff.png"),
-      Ravenclaw: require("/Users/admin/Developer/SpelBound/src/home/src/assets/ravenclaw.jpg"),
+      Gryffindor: require("../assets/gryffindor.jpg"),
+      Slytherin: require("../assets/slytherin.png"),
+      Hufflepuff: require("../assets/hufflepuff.png"),
+      Ravenclaw: require("../assets/ravenclaw.jpg"),
     };
   
     return houseAssets[houseName];
