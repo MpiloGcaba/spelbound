@@ -10,11 +10,7 @@ const Stack = createNativeStackNavigator();
 
 // Define Bottom Navigation Routes
 const HomeRoute = ({ navigation }: any) => <HomeScreen navigation={navigation} />;
-const ElixirsRoute = () => (
-  <View style={styles.scene}>
-    <Text>Elixirs</Text>
-  </View>
-);
+const ElixirsRoute = ({navigation}: any) => <Elixirs navigation={navigation} />;
 
 const MyComponent = () => {
   const [index, setIndex] = React.useState(0);
@@ -29,7 +25,7 @@ const MyComponent = () => {
       case "home":
         return <HomeRoute navigation={{ jumpTo }} />;
       case "elixirs":
-        return <ElixirsRoute />;
+        return <ElixirsRoute navigation={{jumpTo}}>;
       default:
         return null;
     }
