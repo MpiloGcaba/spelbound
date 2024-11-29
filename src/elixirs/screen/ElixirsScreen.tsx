@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHouses } from "../redux/Store/HousesSlice";
-import { RootState } from "../../../store/Index";
-import ImageAndTitleCard from "../components/ImageAndTitleCard";
-import StatusHandler from "../../../common/ui/StatusHandler";
-import { House } from "../models/HouseModel";
+import { RootState } from "../../store/Index";
+import StatusHandler from "../../common/ui/StatusHandler";
+import { getElixirs } from "../services/ElixirsApi";
+import { Elixir } from "../models/ElixirsModels";
+import Searchbar from "react-native-paper/lib/typescript/components/Searchbar";
+import { fetchElixirs } from "../redux/ElixirSlice";
 
 const ElixirsScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
-  const { data: elixir, status, error } = useSelector((state: RootState) => state.houses);
+  const { data: elixir, status, error } = useSelector((state: RootState) => state.elixirs);
 
   useEffect(() => {
     if (status === "idle") {
@@ -18,27 +19,16 @@ const ElixirsScreen = ({ navigation }: any) => {
   }, [dispatch, status]);
 
   const handlePress = (houseId: string) => {
-    navigation.navigate("Details", { houseId });
+    // the accordion should expend
   };
 
-  const renderItem = ({ item }: { item: House }) => (
-    <ImageAndTitleCard house={item} imageUrl={getHouseAsset(item.name)} onPress={handlePress} />
-  );
+  const renderItem = ({ item }: { item: Elixir }) => ();
 
   const handleRetry = () => {
-    dispatch(fetchHouses());
+    dispatch(fetchElixirs());
   };
 
-  const getHouseAsset = (houseName: string): string => {
-    const houseAssets: { [key: string]: string } = {
-      Gryffindor: require("../assets/gryffindor.jpg"),
-      Slytherin: require("../assets/slytherin.png"),
-      Hufflepuff: require("../assets/hufflepuff.png"),
-      Ravenclaw: require("../assets/ravenclaw.jpg"),
-    };
-
-    return houseAssets[houseName];
-  };
+  const [searchQuery, setSearchQuery] = React.useState('');
 
 
   return (
@@ -48,8 +38,13 @@ const ElixirsScreen = ({ navigation }: any) => {
       onRetry={handleRetry}
     >
       <View style={styles.container}>
+        <Searchbar
+          placeholder="Search"
+          onChangeText={setSearchQuery}
+          value={searchQuery}
+        />
         <FlatList
-          data={houses}
+          data={elixir}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
@@ -70,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default ElixirsScreen;

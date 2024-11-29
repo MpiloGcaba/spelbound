@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import housesReducer from '../home/src/redux/Store/HousesSlice';
-import elixirReducer from '../elixirs/src/redux/Store/ElixirSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import housesReducer from "../home/src/redux/Store/HousesSlice";
+import elixirsReducer from "../elixirs/redux/ElixirSlice";
 
 const store = configureStore({
   reducer: {

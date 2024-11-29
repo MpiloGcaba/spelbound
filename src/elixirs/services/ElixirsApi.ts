@@ -1,7 +1,7 @@
-import axiosClient from '../../../common/networking/Client';
-import { House } from '../models/Elixirs';
+import axiosClient from "../../common/networking/Client";
+import { Elixir } from "../models/ElixirsModels";
 
-export const getElixirs = async (): Promise<Elixirs[]> => {
-  const response = await axiosClient.get<Elixirs[]>('/elixirs');
+export const getElixirs = async (): Promise<Elixir[]> => {
+  const response = await axiosClient.get<Elixir[]>("/elixirs");
   return response.data;
 };
