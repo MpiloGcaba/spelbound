@@ -7,25 +7,25 @@ interface AccordionProps{
     elixir: Elixir
 }
 
-const ListAccordion: React.FC< AccordionProps> = ({elixir}) => {
-  const [expanded, setExpanded] = React.useState(true);
-
-  const handlePress = () => setExpanded(!expanded);
-
-  return (
-    <TouchableOpacity onPress={handlePress} style={styles.touchable}>
-    <List.Section title="Accordions">
-      <List.Accordion
-        title={elixir.name}>
-        <List.Item title={elixir.sideEffects} />
-        <List.Item title={elixir.difficulty} />
-      </List.Accordion>
-    </List.Section>
-    </TouchableOpacity>
-  );
-
+const ListAccordion: React.FC<{ elixir: Elixir }> = ({ elixir }) => {
+    const [expanded, setExpanded] = React.useState(true);
   
-};
+    const handlePress = () => setExpanded(!expanded);
+  
+    return (
+      <TouchableOpacity onPress={handlePress} style={styles.touchable}>
+        <List.Section>
+          <List.Accordion
+            title={elixir.name}
+            expanded={expanded}
+            onPress={handlePress}>
+            <List.Item title={elixir.sideEffects} />
+            <List.Item title={elixir.difficulty} />
+          </List.Accordion>
+        </List.Section>
+      </TouchableOpacity>
+    );
+  };
 
 const styles = StyleSheet.create({
     card: {

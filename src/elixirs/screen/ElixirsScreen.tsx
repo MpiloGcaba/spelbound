@@ -5,8 +5,9 @@ import { RootState } from "../../store/Index";
 import StatusHandler from "../../common/ui/StatusHandler";
 import { getElixirs } from "../services/ElixirsApi";
 import { Elixir } from "../models/ElixirsModels";
-import { Searchbar } from 'react-native-paper';
 import { fetchElixirs } from "../redux/ElixirSlice";
+import ListAccordion from "../components/ListAccordion";
+import { Searchbar } from "react-native-paper";
 
 const ElixirsScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
@@ -18,18 +19,13 @@ const ElixirsScreen = ({ navigation }: any) => {
     }
   }, [dispatch, status]);
 
-  const handlePress = (houseId: string) => {
-    // the accordion should expend
-  };
-
-  const renderItem = ({ item }: { item: Elixir }) => ();
+  const renderItem = ({ item }: { item: Elixir }) => <ListAccordion elixir={item} />;
 
   const handleRetry = () => {
     dispatch(fetchElixirs());
   };
 
   const [searchQuery, setSearchQuery] = React.useState('');
-
 
   return (
     <StatusHandler
@@ -46,7 +42,7 @@ const ElixirsScreen = ({ navigation }: any) => {
         <FlatList
           data={elixir}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}  // Ensure id is string
           contentContainerStyle={styles.list}
         />
       </View>
