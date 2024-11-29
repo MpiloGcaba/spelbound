@@ -5,7 +5,7 @@ import { RootState } from "../../store/Index";
 import StatusHandler from "../../common/ui/StatusHandler";
 import { getElixirs } from "../services/ElixirsApi";
 import { Elixir } from "../models/ElixirsModels";
-import Searchbar from "react-native-paper/lib/typescript/components/Searchbar";
+import { Searchbar } from 'react-native-paper';
 import { fetchElixirs } from "../redux/ElixirSlice";
 
 const ElixirsScreen = ({ navigation }: any) => {

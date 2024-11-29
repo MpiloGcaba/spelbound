@@ -1,7 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
-import { Card, Title, Paragraph } from 'react-native-paper';
-import { House } from '../models/HouseModel';
+import { TouchableOpacity, StyleSheet, GestureResponderEvent } from "react-native";
+import { Card, Title, Paragraph } from "react-native-paper";
+import { House } from "../models/HouseModel";
 
 //Properties that will be pass on to component
 interface ImageAndTitleCardProps {

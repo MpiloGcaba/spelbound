@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../home/src/screens/HomeScreen";
+import ElixirsScreen from "../elixirs/screen/ElixirsScreen"
 import { StyleSheet, Text, View } from "react-native";
 import { BottomNavigation } from "react-native-paper";
 import { Provider } from "react-redux";
@@ -10,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 // Define Bottom Navigation Routes
 const HomeRoute = ({ navigation }: any) => <HomeScreen navigation={navigation} />;
-const ElixirsRoute = ({navigation}: any) => <Elixirs navigation={navigation} />;
+const ElixirsRoute = ({navigation}: any) => <ElixirsScreen navigation={navigation} />;
 
 const MyComponent = () => {
   const [index, setIndex] = React.useState(0);
@@ -25,7 +26,7 @@ const MyComponent = () => {
       case "home":
         return <HomeRoute navigation={{ jumpTo }} />;
       case "elixirs":
-        return <ElixirsRoute navigation={{jumpTo}}>;
+        return <ElixirsRoute navigation={{jumpTo}} />;
       default:
         return null;
     }
@@ -64,13 +65,13 @@ const DetailsScreen = ({ route }: any) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  scene: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+//
+// const styles = StyleSheet.create({
+//   scene: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+// });
 
 export default MyComponent;
