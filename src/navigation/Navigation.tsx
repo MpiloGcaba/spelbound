@@ -37,7 +37,7 @@ const MyComponent = () => {
       <Stack.Navigator>
         {/* Main Screen with BottomNavigation */}
         <Stack.Screen name="Main" options={{ headerShown: false }}>
-          {(props) => (
+          {() => (
             <View style={{ flex: 1 }}>
               <BottomNavigation
                 navigationState={{ index, routes }}
@@ -47,31 +47,9 @@ const MyComponent = () => {
             </View>
           )}
         </Stack.Screen>
-
-        {/* Details Screen for navigation from Home */}
-        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
-// Dummy Details Screen (replace with your actual component)
-const DetailsScreen = ({ route }: any) => {
-  const { houseId } = route.params;
-  return (
-    <View style={styles.scene}>
-      <Text>Details Screen</Text>
-      <Text>House ID: {houseId}</Text>
-    </View>
-  );
-};
-//
-// const styles = StyleSheet.create({
-//   scene: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-// });
 
 export default MyComponent;

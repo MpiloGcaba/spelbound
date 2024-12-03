@@ -14,7 +14,7 @@ const ListAccordion: React.FC<{ elixir: Elixir }> = ({ elixir }) => {
   
     return (
       <TouchableOpacity onPress={handlePress} style={styles.touchable}>
-        <List.Section>
+        
           <List.Accordion
             title={elixir.name}
             expanded={expanded}
@@ -22,7 +22,7 @@ const ListAccordion: React.FC<{ elixir: Elixir }> = ({ elixir }) => {
             <List.Item title={elixir.sideEffects} />
             <List.Item title={elixir.difficulty} />
           </List.Accordion>
-        </List.Section>
+    
       </TouchableOpacity>
     );
   };

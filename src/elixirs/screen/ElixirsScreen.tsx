@@ -42,7 +42,7 @@ const ElixirsScreen = ({ navigation }: any) => {
         <FlatList
           data={elixir}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}  // Ensure id is string
+          keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.list}
         />
       </View>
